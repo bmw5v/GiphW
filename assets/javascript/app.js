@@ -1,5 +1,8 @@
 $(document).ready(function(){
 
+
+	alert("Instructions: \nClick a category to display giphs. Click on a still image to play the giph, and click on it again to stop the giph.");
+
 	//String of topics
 	var topics = ["Sushi", "Pie", "Steak", "Seafood"];
 
