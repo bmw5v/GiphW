@@ -17,8 +17,9 @@ $(document).ready(function(){
 	//The actual gif urls gotten from the api
 	var acquiredURLStill = "";
 	var acquiredURLActive ="";
-	//Array of active image ID's
-	var activeID = [];
+	//Array of active image ID's. 0 = inactive, 1 = active
+	var activeID = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+	var resetID = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 	//Used as a control for checking if an image is active 
 	var count = 0;
 
@@ -55,7 +56,7 @@ $(document).ready(function(){
 		}
 		
 		//Clears out the array of active IDs since the images on screen changed
-		activeID = [];
+		activeID = resetID;
 
 	});
 
@@ -64,12 +65,34 @@ $(document).ready(function(){
 	//Listens for clicks on the images, and then plays or stops the image that was clicked
 	$("#pictureContainer").on("click", "img", function(){
 
+
+		//If the picture clicked is inactive, activate it
+		if(activeID[this.id] == 0)
+		{
+			activatePicture(this.id);
+			activeID[this.id] = 1;
+		}
+
+		//If the picture clicked is active, deactivate it
+		else if(activeID[this.id] == 1)
+		{
+			deactivatePicture(this.id);
+			activeID[this.id] = 0;
+		}
+
+
+
+
+
+		//Old method, overly complicated. Switched to this new method ^ since it was bothering me
+		/*
 		//Searches to see if the clicked image is active
 		for(i = 0; i < activeID.length; i++)
 		{
 			if(this.id == activeID[i])
 			{
 				count++;
+				break;
 			}
 		}
 
@@ -87,7 +110,7 @@ $(document).ready(function(){
 			activatePicture(this.id);
 			activeID.push(this.id);
 		}
-
+		*/
 
 	});
 
