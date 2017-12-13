@@ -19,9 +19,7 @@ $(document).ready(function(){
 	var acquiredURLActive ="";
 	//Array of active image ID's. 0 = inactive, 1 = active
 	var activeID = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-	var resetID = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-	//Used as a control for checking if an image is active 
-	var count = 0;
+
 
 
 	//Is used to add more buttons from user input
@@ -56,7 +54,7 @@ $(document).ready(function(){
 		}
 		
 		//Clears out the array of active IDs since the images on screen changed
-		activeID = resetID;
+		activeID = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
 	});
 
